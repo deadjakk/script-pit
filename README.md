@@ -10,11 +10,12 @@ This can parse the unique credentials so they can be placed in CSV for quick fil
 
 ## nmap-parser.py
 Parses the .nmap file for hosts that have any information containing the provided substring.  
+There are a number of NMAP output parsers out there but they all seem to favor the XML format which I find lacks the output of some scripts.  
 example command:
-`./nmap-context-parser.py vuln-test.nmap <search string>`
+`./nmap-parser.py vuln-test.nmap <search string>`
 example output:
 ```
-$ ./nmap-context-parser.py vuln-test.nmap VULN
+$ ./nmap-parser.py vuln-test.nmap VULN
 [INFO]Host: 192.168.1.28 Port: 445 --- |   VULNERABLE:
 [INFO]Host: 192.168.1.28 Port: 445 --- |     State: VULNERABLE
 [INFO]Host: host-0.test.local (192.168.1.29) Port: 445 --- |   VULNERABLE:
