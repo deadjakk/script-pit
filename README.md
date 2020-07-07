@@ -1,9 +1,12 @@
 # script-pit
-Obligatory repo for one off scripts and such that i've written, useful on engagements and whatnot.
+Few quick and dirty scripts that I find extremely useful on engagments, frequently used.
 Will try and keep a short description of everything listed below.
 
 ## parsemimi.py
-Simple script that parses mimikatz output, can be used from CLI or as an import.
+Simple script that parses mimikatz output, can be used from CLI or as an import.   
+To clarify: this parses the sekurlsa::logonPasswords command's OUTPUT only. Nothing else.
+Primary use-case for this is when you're finding yourself with dozens or hunreds of mimikatz logonPasswords output files.
+This can parse the unique credentials so they can be placed in CSV for quick filtering/reading.
 
 ## nmap-parser.py
 Parses the .nmap file for hosts that have any information containing the provided substring.  
