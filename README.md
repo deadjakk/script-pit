@@ -42,3 +42,9 @@ Example use case using both:
 192.168.43.198
 192.168.43.199
 ```
+## decrypt-android-react.py
+Run the script in the shared_prefs directory of an android app written in React Native, you should see
+the RN_KEYCHAIN.xml and crypto.KEY_256.xml in the shared_prefs directory  
+```
+./decrypt-android-react.py --dir com.app.whatever/shared_prefs/
+```
