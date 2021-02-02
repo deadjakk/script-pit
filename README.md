@@ -56,3 +56,41 @@ optional arguments:
 
 python3 ./decrypt-android-react.py --dir com.app.whatever/shared_prefs/
 ```
+
+## WebSocketCLI (wscli)  
+Quick and dirty program written in rust to make arbitrary websocket requests.
+
+Help Output:  
+```
+wscli 0.1.0
+
+USAGE:
+    wscli [FLAGS] --data <data> --endpoint <endpoint> --host <host>
+
+FLAGS:
+        --help       Prints help information
+    -q, --quiet      Quiet, show only length
+    -V, --version    Prints version information
+
+OPTIONS:
+    -d, --data <data>            Payload to send Example: {"data":"items"}
+    -e, --endpoint <endpoint>    Target endpoint Example: "getStuff"
+    -h, --host <host>            URL, including the protocol but excluding the endpoint and trailing slash Example:
+```
+
+Example Command: 
+```
+wscli -e endpoint "getUsers" -d '{"search":"exampledata","sort":"ascending"}' -h http://website.com/api
+```
+
+To build, install rust and issue the following command:  
+```
+cargo build
+```
+
+To (optionally) install, rust and issue the following command:  
+```
+cargo install --path /path/to/wscli/folder
+```
+
+
