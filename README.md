@@ -58,7 +58,9 @@ python3 ./decrypt-android-react.py --dir com.app.whatever/shared_prefs/
 ```
 
 ## WebSocketCLI (wscli)  
-Quick and dirty program written in rust to make arbitrary websocket requests.
+Quick and dirty program written in rust to make arbitrary websocket requests. 
+Note: Not fully featured in any way, that's why it is in this repo, also it currently only
+supports secure (ssl) ws sockets.  
 
 Help Output:  
 ```
