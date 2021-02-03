@@ -26,14 +26,27 @@ struct Opt{
 
 fn main() {
     let opts = Opt::from_args();
-    let mut client = ClientBuilder::new(&format!("{}/{}",&opts.host,&opts.endpoint)).unwrap();
+    let mut client = match ClientBuilder::new(&format!("{}/{}",&opts.host,&opts.endpoint)){
+        Ok(client) => client,
+        Err(e) => { 
+            eprintln!("failed to create websocket client: {:?}",e);
+            return;
+        }
+    };
+    let mut stream = match client.connect_secure(None) {
+        Ok(stream) => stream,
+        Err(e) => { 
+            eprintln!("failed to connect to websocket server: {:?}",e);
+            return;
+        }
+    };
     println!("connected");
-    let mut stream = client.connect_secure(None).unwrap();
+
     if let Err(e) = stream.send_message(&Message::text(&opts.data)){
         eprintln!("error sending msg: {:?}",e);
         return;
     }
-    println!("sent message.");
+    println!("sent message");
     match stream.recv_message(){
         Ok(resp)=> {
             match resp{
