@@ -96,3 +96,21 @@ cargo install --path /path/to/wscli/folder
 ```
 
 
+## URLFuzz   
+Quick and dirty glorified for-loop, allows you to feed a newline-separated file
+of possible injections into a GET request. For when you don't feel like starting
+up burp to do a couple basic things.  
+```
+urlfuzz 0.1.0
+
+USAGE:
+    urlfuzz --file <file> --url <url>
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -f, --file <file>    File contaiing tests to run These will be placed in the injection point
+    -u, --url <url>      URL to inject must contain a '*' at the point of injection
+```
