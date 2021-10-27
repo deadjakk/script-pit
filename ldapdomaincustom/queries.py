@@ -1,8 +1,8 @@
 queries={
     1:{
-    "name":"file servers",
+    "name":"home directories, can be used to find file servers",
     "filter":"(&(samAccountType=805306368)(!(userAccountControl:1.2.840.113556.1.4.803:=2))(|(homedirectory=*)(scriptpath=*)(profilepath=*)))",
-    "properties":"homedirectory,scriptpath,profilepath"
+    "properties":"homedirectory,scriptpath,profilepath,samaccountname"
     },
     2:{
     "name":"all users, all properties",
