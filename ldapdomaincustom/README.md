@@ -37,3 +37,13 @@ example: 1,3,5
     cn: user2
     ...
 ```
+
+
+## groupmanager.py
+adds and removes a given user to a given group
+
+```
+$ python groupmanager.py  --server 192.168.1.60 --username administrator --password Password1 --domain sprawl.local --groupdn "CN=Domain Admins,CN=Users,DC=sprawl,DC=local" --userdn "CN=lowpriv lowpriv,CN=Users,DC=sprawl,DC=local" --delete
+bind successful
+result of delete: True
+```
