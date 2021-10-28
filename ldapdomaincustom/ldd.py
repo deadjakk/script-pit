@@ -421,10 +421,12 @@ class domainDumper(object):
             for k,v in queries.items():
                 print ("{} : {}".format(k,v['name']))
             query_nums=input("enter index of desired queries, (comma delimited numbers are "
-                    "accepted as well)\nexample: 1,3,5\n>")
+                    "accepted as well)\nexample: 1,3,5 or * for all\n>")
         except Exception as e:
             print("Error running batch:{}".format(e))
             sys.exit(1)
+        if "*" in query_nums:
+            query_nums = ",".join([str(i) for i in queries.keys()])
         for num in query_nums.split(","):
             # iterate through all selected queries
             try:
