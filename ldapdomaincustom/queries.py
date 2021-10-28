@@ -5,7 +5,7 @@ queries={
     "properties":"homedirectory,scriptpath,profilepath,samaccountname"
     },
     2:{
-    "name":"all users, all properties",
+    "name":"all users all properties",
     "filter":"(objectClass=user)",
     "properties":"*"
     },
@@ -25,8 +25,13 @@ queries={
     "properties":"*"
     },
     6:{
-    "name":"domain admins and nested members",
-    "filter":"(userAccountControl:1.2.840.113556.1.4.803:domain admins)",
+    "name":"disabled users",
+    "filter":"(&(objectclass=user)(objectcategory=user)(useraccountcontrol:1.2.840.113556.1.4.803:=2))",
     "properties":"*"
-    }
+    },
+    7:{
+    "name":"all groups all properties",
+    "filter":"(objectClass=group)",
+    "properties":"*"
+    },
 }
