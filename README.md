@@ -82,3 +82,19 @@ example: 1,3,5
     cn: user2
     ...
 ```
+
+## passbackfinder.py (threaded)
+Looks for xerox machines that you may be able to perform LDAP pass back attack
+against.
+```
+$ python3 passbackfinder.py printers 2
+running with 2 threads against 2 host(s)
+trying 10.20.101.50
+started thread
+trying 10.20.101.46
+started thread
+10.20.101.46 may be vulnerable -> https://10.20.101.46/properties/index.php
+10.20.101.50 may be vulnerable -> https://10.20.101.50/properties/index.php
+finished
+
+```
