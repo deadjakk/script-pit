@@ -432,6 +432,7 @@ class domainDumper(object):
             try:
                 q = queries[int(num)]
                 properties = q['properties'].split(",")
+                print("{}running {} query{}".format("-"*10, q['name'],"-"*10))
                 result=self.customQuery(q['filter'],properties)
                 print(result)
             except Exception as e:
