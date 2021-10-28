@@ -34,4 +34,14 @@ queries={
     "filter":"(objectClass=group)",
     "properties":"*"
     },
+    8:{
+    "name":"description,notes,jobtitles",
+    "filter":"(&(objectClass=user)(|(description=*)(notes=*)))",
+    "properties":"samaccountname,description,notes,title"
+    },
+    9:{
+    "name":"useful computer info ",
+    "filter":"(objectClass=computer)",
+    "properties":"dNSHostName,samaccountname,operatingsystem,lastLogon,isCriticalSystemObject,name,servicePrincipalName,operatingSystemVersion"
+    },
 }
