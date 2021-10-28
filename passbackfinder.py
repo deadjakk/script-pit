@@ -14,9 +14,10 @@ q=queue.Queue()
 fh = open(sys.argv[1],'r')
 
 def check_system(ip):
-	print("trying {}".format(ip))
 	url ="https://{}/properties/index.php".format(ip)
-	resp = r.get(url,verify=False)
+	print("trying {}".format(ip))
+	resp = r.get(url,verify=False,timeout=5)
+	print(resp.status_code)
 	if resp.status_code == 200 and "XEROX" in resp.text.upper():
 		print("{} may be vulnerable -> {}".format(ip,url))
 
@@ -32,11 +33,12 @@ def worker():
 		ip = q.get()
 		try:
 			check_system(ip)	
-			q.task_done()
 		except Exception as e:
-			eprint("error checking system: {}".format(e))
+			print("error checking system: {}".format(e),file=sys.stderr)
+		q.task_done()
 
 print ("running with {} threads against {} host(s)".format(thread_num,len(ips)))
+
 for ip in ips:
 	q.put(ip)
 
