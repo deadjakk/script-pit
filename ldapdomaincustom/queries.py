@@ -23,5 +23,10 @@ queries={
     "name":"no kerb preauth required (asrep roast-able)",
     "filter":"(userAccountControl:1.2.840.113556.1.4.803:=4194304)",
     "properties":"*"
+    },
+    6:{
+    "name":"domain admins and nested members",
+    "filter":"(userAccountControl:1.2.840.113556.1.4.803:domain admins)",
+    "properties":"*"
     }
 }
