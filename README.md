@@ -98,3 +98,15 @@ started thread
 finished
 
 ```
+
+## adcsfinder.py (threaded)
+Provided a list of ip addresses, will perform something like a banner grab
+to locate an active directory certificate authority server on the network.
+Useful when looking for the ADCS services for the petitpotam attack.
+```
+python3 adcs-finder.py adcs.lst
+running with 1 threads against 1 host(s)
+started thread
+possible ca-> ADCS-1.sprawl.local
+finished
+```
