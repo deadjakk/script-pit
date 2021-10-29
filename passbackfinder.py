@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import threading,queue
 import requests as r
 import sys
