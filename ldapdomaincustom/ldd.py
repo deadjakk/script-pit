@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 ####################
 #
 # Copyright (c) 2017 Dirk-jan Mollema
@@ -41,6 +43,12 @@ from future.utils import itervalues, iteritems, native_str
 # dnspython, for resolving hostnames
 import dns.resolver
 
+# from https://stackoverflow.com/questions/51547064/convert-18-digit-ldap-filetime-timestamps-to-human-readable-date
+# Vasiliy.Koshkovsky
+def ad_timestamp(timestamp):
+    if timestamp != 0:
+        return datetime(1601, 1, 1) + timedelta(seconds=timestamp/10000000).isoformat()
+    return np.nan
 
 # User account control flags
 # From: https://blogs.technet.microsoft.com/askpfeplat/2014/01/15/understanding-the-useraccountcontrol-attribute-in-active-directory/
@@ -433,8 +441,18 @@ class domainDumper(object):
                 q = queries[int(num)]
                 properties = q['properties'].split(",")
                 print("{}running {} query{}".format("-"*10, q['name'],"-"*10))
-                result=self.customQuery(q['filter'],properties)
-                print(result)
+                results=self.customQuery(q['filter'],properties)
+                for result in results:
+                    # print(result.entry_to_json())
+                    _d = result.entry_attributes_as_dict
+                    if 'ms-Mcs-AdmPwdExpirationTime'  in _d.keys():
+                        _d['ms-Mcs-AdmPwdExpirationTime'] = ad_timestamp(_d['ms-Mcs-AdmPwdExpirationTime'][0])
+
+                    print("{}".format(_d))
+
+                    # print (''.join(['{0}|{1}||'.format(k, v) for k,v in result.entry_attributes_as_dict.items()]))
+#,result.ms-Mcs-AdmPwd,result.ms-Mcs-AdmPwdExpirationTime))
+# """iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_changes', '_state', 'entry_attributes', 'entry_attributes_as_dict', 'entry_cursor', 'entry_definition', 'entry_dn', 'entry_mandatory_attributes', 'entry_raw_attribute', 'entry_raw_attributes', 'entry_read_time', 'entry_status', 'entry_to_json', 'entry_to_ldif', 'entry_writable', 'ms-Mcs-AdmPwd', 'ms-Mcs-AdmPwdExpirationTime', 'sAMAccountName']
             except Exception as e:
                 print("error running query: '{}'---> {}...continuing".format(
                     queries[int(num)]['name'],str(e)))
