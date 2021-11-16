@@ -44,4 +44,9 @@ queries={
     "filter":"(objectClass=computer)",
     "properties":"dNSHostName,samaccountname,operatingsystem,lastLogon,isCriticalSystemObject,name,servicePrincipalName,operatingSystemVersion"
     },
+    10:{
+    "name":"dumplaps",
+    "filter":"(&(objectCategory=computer)(ms-MCS-AdmPwd=*))",
+    "properties":"ms-MCS-AdmPwd,SAMAccountname,ms-Mcs-AdmPwdExpirationTime"
+    }
 }
