@@ -443,16 +443,11 @@ class domainDumper(object):
                 print("{}running {} query{}".format("-"*10, q['name'],"-"*10))
                 results=self.customQuery(q['filter'],properties)
                 for result in results:
-                    # print(result.entry_to_json())
                     _d = result.entry_attributes_as_dict
                     if 'ms-Mcs-AdmPwdExpirationTime'  in _d.keys():
                         _d['ms-Mcs-AdmPwdExpirationTime'] = ad_timestamp(_d['ms-Mcs-AdmPwdExpirationTime'][0])
-
                     print("{}".format(_d))
 
-                    # print (''.join(['{0}|{1}||'.format(k, v) for k,v in result.entry_attributes_as_dict.items()]))
-#,result.ms-Mcs-AdmPwd,result.ms-Mcs-AdmPwdExpirationTime))
-# """iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_changes', '_state', 'entry_attributes', 'entry_attributes_as_dict', 'entry_cursor', 'entry_definition', 'entry_dn', 'entry_mandatory_attributes', 'entry_raw_attribute', 'entry_raw_attributes', 'entry_read_time', 'entry_status', 'entry_to_json', 'entry_to_ldif', 'entry_writable', 'ms-Mcs-AdmPwd', 'ms-Mcs-AdmPwdExpirationTime', 'sAMAccountName']
             except Exception as e:
                 print("error running query: '{}'---> {}...continuing".format(
                     queries[int(num)]['name'],str(e)))
