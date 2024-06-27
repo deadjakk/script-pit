@@ -48,5 +48,15 @@ queries={
     "name":"dumplaps",
     "filter":"(&(objectCategory=computer)(ms-MCS-AdmPwd=*))",
     "properties":"ms-MCS-AdmPwd,SAMAccountname,ms-Mcs-AdmPwdExpirationTime"
-    }
+    },
+    11:{
+    "name":"unconstrained delegation (samAccountName + lastLogon) (no DCs)",
+    "filter":"(&(userAccountControl:1.2.840.113556.1.4.803:=524288)(!(&(objectCategory=computer)(userAccountControl:1.2.840.113556.1.4.803:=8192))))",
+    "properties":"samaccountname,lastLogon"
+    },
+    12:{
+    "name":"domain controllers (samaccountonly)",
+    "filter":"(&(objectCategory=computer)(userAccountControl:1.2.840.113556.1.4.803:=8192))",
+    "properties":"samaccountname"
+    },
 }
